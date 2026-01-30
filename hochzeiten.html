@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hochzeiten | DJ AfroJam & Freie Redner</title>
+    <style>
+        :root {
+            --gold: #f39c12;
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(10, 10, 10, 0.92);
+            --text: #ffffff;
+        }
+
+        html, body {
+            margin: 0; padding: 0; width: 100%; overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            background-color: var(--dark-bg);
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('bilder/wedding_bg.jpg');
+            background-attachment: fixed; 
+            background-position: top center; 
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .nav-back { padding: 20px; position: sticky; top: 0; z-index: 1000; }
+        .nav-back a { 
+            color: var(--gold); text-decoration: none; font-weight: bold; border: 1px solid var(--gold); 
+            padding: 10px 20px; border-radius: 50px; background: rgba(0,0,0,0.8); transition: 0.3s;
+        }
+        .nav-back a:hover { background: var(--gold); color: black; }
+
+        .container { max-width: 1100px; margin: auto; padding: 20px; }
+
+        header { text-align: center; margin-bottom: 40px; padding: 120px 20px 40px 20px; }
+        h1 { 
+            font-size: clamp(2.5rem, 10vw, 5rem); color: var(--gold); text-transform: uppercase; 
+            text-shadow: 3px 3px 20px rgba(0,0,0,0.9); margin: 0;
+        }
+        .subtitle { font-size: 1.5rem; margin-top: 10px; font-weight: 300; letter-spacing: 2px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+
+        .content-box {
+            background: var(--card-bg); padding: 40px; border-radius: 25px; border: 1px solid var(--gold);
+            line-height: 1.8; margin-bottom: 40px; text-align: center; backdrop-filter: blur(10px);
+        }
+
+        .showcase-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 25px; 
+            margin-bottom: 50px;
+        }
+
+        .showcase-item {
+            border-radius: 15px; overflow: hidden; border: 2px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s;
+            background: #000;
+            cursor: pointer;
+        }
+        .showcase-item:hover { transform: scale(1.03); border-color: #fff; }
+        .showcase-item img { width: 100%; height: 350px; object-fit: cover; display: block; }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox img { max-width: 90%; max-height: 85%; border: 2px solid var(--gold); border-radius: 10px; }
+        .close-lightbox {
+            position: absolute; top: 30px; right: 40px;
+            color: var(--gold); font-size: 50px; font-weight: bold; cursor: pointer;
+        }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .wedding-card { 
+            background: var(--card-bg); border-radius: 20px; border: 1px solid rgba(243, 156, 18, 0.3); 
+            text-align: center; padding: 30px; backdrop-filter: blur(10px);
+        }
+        .wedding-card h3 { color: var(--gold); margin-top: 0; font-size: 1.8rem; }
+        .wedding-card p { line-height: 1.6; text-align: left; }
+
+        .audio-item { margin-bottom: 25px; padding: 10px; border-bottom: 1px solid rgba(243, 156, 18, 0.2); }
+        .audio-item:last-child { border-bottom: none; }
+        .audio-label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--gold); }
+
+        audio { width: 100%; filter: invert(100%) hue-rotate(180deg) brightness(1.5); }
+
+        .form-section { 
+            background: var(--card-bg); padding: 50px; border-radius: 25px; border: 1px solid var(--gold);
+            backdrop-filter: blur(10px); margin-bottom: 40px;
+        }
+        .form-section h2 { text-align: center; color: var(--gold); margin-bottom: 30px; }
+        .submit-btn { 
+            background: var(--gold); color: black; padding: 20px; border: none; border-radius: 50px; 
+            font-weight: bold; cursor: pointer; width: 100%; font-size: 1.2rem; transition: 0.3s;
+        }
+        .submit-btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(243, 156, 18, 0.4); }
+
+        footer { text-align: center; padding: 60px 20px; color: #888; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            body { background-attachment: scroll; background-position: top center; }
+            header { padding: 80px 20px 20px 20px; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-back"><a href="index.html">← ZURÜCK ZU AFROJAM</a></div>
+
+<div class="container">
+    <header>
+        <h1>Ihre Traumhochzeit</h1>
+        <div class="subtitle">DJ AfroJam & Exklusive Freie Redner</div>
+    </header>
+
+    <section class="content-box">
+        <h2>Persönlich. Professionell. Einzigartig.</h2>
+        <p>Ein Hoch auf die Liebe! Wir begleiten Sie an Ihrem wichtigsten Tag mit Leidenschaft und Perfektion.</p>
+    </section>
+
+    <div class="showcase-grid">
+        <div class="showcase-item" onclick="openLightbox('bilder/IMG_8142.jpg')"><img src="bilder/IMG_8142.jpg" alt="Trauung Schloss"></div>
+        <div class="showcase-item" onclick="openLightbox('bilder/IMG_8144.jpg')"><img src="bilder/IMG_8144.jpg" alt="Trauung Detail"></div>
+        <div class="showcase-item" onclick="openLightbox('bilder/celebrate-1687109201166.jpg')"><img src="bilder/celebrate-1687109201166.jpg" alt="Willkommensschild"></div>
+        <div class="showcase-item" onclick="openLightbox('bilder/IMG_8160.jpg')"><img src="bilder/IMG_8160.jpg" alt="Brautpaar Shooting"></div>
+        <div class="showcase-item" onclick="openLightbox('bilder/IMG_8058.jpg')"><img src="bilder/IMG_8058.jpg" alt="Brautpaar Garten"></div>
+        <div class="showcase-item" onclick="openLightbox('bilder/IMG_8071.jpg')"><img src="bilder/IMG_8071.jpg" alt="Hochzeits-Moment"></div>
+    </div>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+
+    <div class="grid">
+        <div class="wedding-card">
+            <h3>Hochzeits-Sound</h3>
+            <div class="audio-item">
+                <span class="audio-label">Hörprobe 1: Hand in Hand</span>
+                <audio controls><source src="audio/Unter dem Himmel 2 .mp3" type="audio/mpeg"></audio>
+            </div>
+            <div class="audio-item">
+                <span class="audio-label">Hörprobe 2: Für immer</span>
+                <audio controls><source src="audio/Für immer .mp3" type="audio/mpeg"></audio>
+            </div>
+        </div>
+        
+        <div class="wedding-card">
+            <h3>Freie Redner</h3>
+            <p>
+                <strong>Herzliche Glückwünsche an das Brautpaar!</strong><br><br>
+                Der Moment, in dem zwei Menschen "Ja" zueinander sagen, ist einer der kostbarsten im Leben. Als freie Redner ist es unser Ziel, diesen Augenblick so persönlich und berührend wie möglich zu gestalten. <br><br>
+                Wir erzählen Ihre ganz eigene Liebesgeschichte – mit Humor, Tiefgang und Authentizität. Von der feierlichen Zeremonie bis hin zum individuellen Eheversprechen stehen wir Ihnen zur Seite, damit Ihre Trauung genau so wird, wie Sie es sich erträumt haben. Gemeinsam schaffen wir Erinnerungen, die ein Leben lang bleiben.
+            </p>
+        </div>
+    </div>
+
+    <section class="form-section">
+        <h2>Planungsanfrage</h2>
+        <form action="mailto:info@dj-afrojam.de" method="post" enctype="text/plain">
+            <input type="text" name="Namen" placeholder="Namen des Paares" required style="width:100%; padding:15px; margin-bottom:15px; background:rgba(255,255,255,0.1); border:1px solid #444; color:white; border-radius:10px;">
+            <input type="date" name="Datum" required style="width:100%; padding:15px; margin-bottom:15px; background:rgba(255,255,255,0.1); border:1px solid #444; color:white; border-radius:10px;">
+            <button type="submit" class="submit-btn">KOSTENLOSES VORGESPRÄCH VEREINBAREN</button>
+        </form>
+    </section>
+</div>
+
+<footer>© 2026 DJ AfroJam – Abteilung Vollgas</footer>
+
+<script>
+    function openLightbox(src) {
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox').style.display = 'flex';
+    }
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
