@@ -94,14 +94,34 @@
 
         audio { width: 100%; filter: invert(100%) hue-rotate(180deg) brightness(1.5); }
 
+        /* Optimiertes Formular-Styling */
         .form-section { 
             background: var(--card-bg); padding: 50px; border-radius: 25px; border: 1px solid var(--gold);
             backdrop-filter: blur(10px); margin-bottom: 40px;
         }
         .form-section h2 { text-align: center; color: var(--gold); margin-bottom: 30px; }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group.full-width { grid-column: span 2; }
+
+        label { display: block; margin-bottom: 8px; color: var(--gold); font-weight: bold; }
+        input, select, textarea { 
+            width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid #444; color: white; border-radius: 10px; box-sizing: border-box;
+            font-size: 1rem;
+        }
+        input:focus, select:focus, textarea:focus { border-color: var(--gold); outline: none; }
+
         .submit-btn { 
             background: var(--gold); color: black; padding: 20px; border: none; border-radius: 50px; 
             font-weight: bold; cursor: pointer; width: 100%; font-size: 1.2rem; transition: 0.3s;
+            margin-top: 10px;
         }
         .submit-btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(243, 156, 18, 0.4); }
 
@@ -110,7 +130,8 @@
         @media (max-width: 768px) {
             body { background-attachment: scroll; background-position: top center; }
             header { padding: 80px 20px 20px 20px; }
-            .grid { grid-template-columns: 1fr; }
+            .grid, .form-grid { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
         }
     </style>
 </head>
@@ -167,10 +188,55 @@
     </div>
 
     <section class="form-section">
-        <h2>Planungsanfrage</h2>
+        <h2>Unverbindliche Planungsanfrage</h2>
         <form action="mailto:info@dj-afrojam.de" method="post" enctype="text/plain">
-            <input type="text" name="Namen" placeholder="Namen des Paares" required style="width:100%; padding:15px; margin-bottom:15px; background:rgba(255,255,255,0.1); border:1px solid #444; color:white; border-radius:10px;">
-            <input type="date" name="Datum" required style="width:100%; padding:15px; margin-bottom:15px; background:rgba(255,255,255,0.1); border:1px solid #444; color:white; border-radius:10px;">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Namen des Brautpaars</label>
+                    <input type="text" name="Namen" placeholder="z.B. Janine & Christian" required>
+                </div>
+                <div class="form-group">
+                    <label>E-Mail-Adresse (Pflichtfeld)</label>
+                    <input type="email" name="Email" placeholder="beispiel@mail.de" required>
+                </div>
+                <div class="form-group">
+                    <label>Handynummer (Pflichtfeld)</label>
+                    <input type="tel" name="Telefon" placeholder="0170 / 1234567" required>
+                </div>
+                <div class="form-group">
+                    <label>Hochzeitsdatum</label>
+                    <input type="date" name="Datum" required>
+                </div>
+                <div class="form-group">
+                    <label>Location / Ort</label>
+                    <input type="text" name="Location" placeholder="Name der Location oder Stadt">
+                </div>
+                <div class="form-group">
+                    <label>Gewünschter Service</label>
+                    <select name="Service">
+                        <option value="Kombipaket">Kombipaket (DJ & Redner)</option>
+                        <option value="DJ">Nur DJ-Service</option>
+                        <option value="Redner">Nur Freier Redner</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Gästeanzahl (ca.)</label>
+                    <input type="number" name="Gaeste" placeholder="z.B. 80">
+                </div>
+                <div class="form-group">
+                    <label>Wie seid Ihr auf uns aufmerksam geworden?</label>
+                    <select name="Empfehlung">
+                        <option value="Instagram">Instagram</option>
+                        <option value="Empfehlung">Empfehlung</option>
+                        <option value="Google">Google / Internet</option>
+                        <option value="Sonstiges">Sonstiges</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label>Eure Vision / Besondere Wünsche</label>
+                    <textarea name="Nachricht" rows="5" placeholder="Erzählt uns ein wenig von Eurer Vision..."></textarea>
+                </div>
+            </div>
             <button type="submit" class="submit-btn">KOSTENLOSES VORGESPRÄCH VEREINBAREN</button>
         </form>
     </section>
@@ -189,5 +255,4 @@
 </script>
 
 </body>
-
 </html>
