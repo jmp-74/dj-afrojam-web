@@ -18,7 +18,7 @@
             font-family: 'Segoe UI', Roboto, sans-serif;
             color: var(--text);
             background-color: var(--dark-bg);
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bilder/party_hintergrund.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('bilder/party_hintergrund.jpg');
             background-attachment: fixed; 
             background-position: center;
             background-repeat: no-repeat;
@@ -26,7 +26,7 @@
         }
 
         header {
-            min-height: 70vh;
+            min-height: 50vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -38,84 +38,108 @@
         h1 { font-size: clamp(2.5rem, 12vw, 6rem); color: var(--gold); margin: 0; text-transform: uppercase; text-shadow: 3px 3px 20px rgba(0,0,0,0.9); }
         .subtitle { font-size: clamp(1.1rem, 4vw, 2rem); font-weight: bold; background: rgba(0,0,0,0.7); padding: 12px 25px; border-radius: 50px; margin-top: 20px; border: 1px solid var(--gold); }
 
-        .container { max-width: 1200px; margin: auto; padding: 40px 15px; }
-        .section-title { text-align: center; color: var(--gold); font-size: clamp(2rem, 8vw, 3rem); margin: 60px 0 40px 0; }
+        .container { max-width: 1200px; margin: auto; padding: 20px; }
+        .section-title { text-align: center; color: var(--gold); font-size: clamp(1.8rem, 6vw, 2.8rem); margin: 60px 0 30px 0; text-transform: uppercase; letter-spacing: 2px; }
 
-        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 70px; }
+        /* Partner-Mittelteil Design */
+        .partner-wrapper {
+            background: rgba(10, 10, 10, 0.85);
+            border: 2px solid var(--gold);
+            border-radius: 30px;
+            padding: 50px 30px;
+            box-shadow: 0 0 40px rgba(243, 156, 18, 0.15);
+            margin-bottom: 60px;
+            backdrop-filter: blur(15px);
+        }
+
+        .partner-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            gap: 40px; 
+            align-items: end; 
+        }
+
+        .partner-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 0.4s;
+        }
+        .partner-card:hover { transform: scale(1.05); }
+
+        .partner-card img { 
+            width: 100%; height: auto; max-width: 280px;
+            border-radius: 15px; margin-bottom: 25px; 
+            border: 1px solid rgba(243, 156, 18, 0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .partner-card a { 
+            color: var(--gold); text-decoration: none; font-weight: bold; 
+            font-size: 1.2rem; text-align: center; letter-spacing: 1px; transition: 0.3s;
+        }
+        .partner-card a:hover { color: #fff; }
+
+        /* Allgemeine Karten & Layout */
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 50px; }
 
         .card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(243, 156, 18, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: 0.3s;
-            text-align: center;
+            background: var(--card-bg); padding: 30px; border-radius: 20px;
+            border: 1px solid rgba(243, 156, 18, 0.2); backdrop-filter: blur(10px);
+            transition: 0.4s; text-align: center;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
         .card:hover { transform: translateY(-5px); border-color: var(--gold); }
 
-        .description-text {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            line-height: 1.8;
-            border: 1px solid var(--gold);
-            margin-bottom: 70px;
-            backdrop-filter: blur(10px);
+        .btn-link {
+            display: inline-block; background: var(--gold); color: #000;
+            padding: 15px 35px; text-decoration: none; border-radius: 50px;
+            font-weight: bold; margin-top: 15px; transition: 0.3s; text-transform: uppercase;
+            border: none; cursor: pointer; font-size: 1rem;
         }
-        .description-text b { color: var(--gold); }
-        .hobby-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
-        .hobby-tag { background: rgba(243, 156, 18, 0.2); border: 1px solid var(--gold); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; }
+        .btn-link:hover { background: #fff; box-shadow: 0 0 15px var(--gold); }
 
-        audio { width: 100%; margin-top: 15px; filter: invert(100%) hue-rotate(180deg) brightness(1.5); }
-
-        .insta-gallery-container {
-            background: rgba(15, 15, 15, 0.85);
-            padding: 40px 20px;
-            border-radius: 25px;
-            border: 1px solid var(--gold);
-            text-align: center;
-            width: 90%;
-            max-width: 1100px;
-            margin: 0 auto 70px auto;
+        .description-box {
+            background: var(--card-bg); padding: 40px; border-radius: 25px;
+            border: 1px solid var(--gold); text-align: center; margin-bottom: 40px;
         }
+        .hobby-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; list-style: none; padding: 0; margin-top: 20px; }
+        .hobby-tag { background: rgba(243, 156, 18, 0.2); border: 1px solid var(--gold); padding: 8px 20px; border-radius: 50px; font-size: 1rem; }
 
-        .insta-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 20px 0;
+        .audio-label { display: block; margin-bottom: 10px; font-weight: bold; color: var(--gold); }
+        audio { width: 100%; filter: invert(100%) hue-rotate(180deg) brightness(1.5); }
+
+        .map-container { width: 100%; height: 400px; border-radius: 25px; border: 3px solid var(--gold); overflow: hidden; margin-top: 20px; box-shadow: 0 0 30px rgba(0,0,0,0.6); }
+
+        /* Formular Styles */
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; }
+        input, textarea { 
+            width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid #444; color: white; border-radius: 10px; 
+            box-sizing: border-box; font-size: 1rem; font-family: inherit;
         }
+        input:focus, textarea:focus { border-color: var(--gold); outline: none; }
+        .full-width { grid-column: span 2; }
 
-        .insta-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            padding: 15px;
-            transition: 0.3s;
-            border: 1px solid rgba(243, 156, 18, 0.1);
+        /* Footer & Modals */
+        footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.95); font-size: 0.9rem; color: #888; border-top: 1px solid var(--gold); }
+        .legal-links { margin-top: 15px; }
+        .legal-links a { color: var(--gold); text-decoration: none; margin: 0 10px; cursor: pointer; transition: 0.3s; }
+        .legal-links a:hover { color: #fff; }
+
+        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; }
+        .modal-content { background: #1a1a1a; margin: 5% auto; padding: 40px; border: 1px solid var(--gold); width: 85%; max-width: 800px; border-radius: 15px; color: #ddd; line-height: 1.6; }
+        .modal-content h2 { color: var(--gold); border-bottom: 1px solid #333; padding-bottom: 10px; margin-top: 0; }
+        .modal-content h3 { color: #fff; margin-top: 20px; }
+        .close-btn { color: var(--gold); float: right; font-size: 30px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .close-btn:hover { color: #fff; }
+
+        @media (max-width: 768px) {
+            .partner-grid { grid-template-columns: 1fr; }
+            .partner-card img { max-width: 240px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
         }
-
-        .insta-item img { width: 100%; height: 100%; object-fit: contain; border-radius: 10px; }
-        .insta-name { display: block; margin-top: 20px; color: var(--gold); font-weight: bold; font-size: 1.1rem; text-decoration: none; }
-
-        .map-container {
-            width: 100%; height: 450px; border-radius: 25px; overflow: hidden;
-            border: 2px solid var(--gold); margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .booking-btn {
-            display: inline-block; background: var(--gold); color: #000; padding: 20px 45px;
-            font-weight: bold; text-decoration: none; border-radius: 50px; font-size: 1.2rem;
-        }
-
-        footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.95); font-size: 0.9rem; color: #888; }
-        .legal-links { margin-top: 20px; }
-        .legal-links a { color: var(--gold); text-decoration: none; margin: 0 15px; cursor: pointer; font-weight: bold; }
-
-        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); overflow-y: auto; }
-        .modal-content { background-color: #1a1a1a; margin: 2% auto; padding: 35px; border: 1px solid var(--gold); width: 90%; max-width: 900px; border-radius: 15px; color: #ccc; line-height: 1.6; }
-        .close-btn { color: var(--gold); float: right; font-size: 30px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -126,9 +150,9 @@
 </header>
 
 <div class="container">
-    <section class="description-text">
+    <section class="description-box">
         <h2 style="color:var(--gold); margin-top:0;">Wer ist AFROJAM?</h2>
-        <p><b>AfroJam</b> ist Producer, DJ und Hochzeitsredner. Festes Mitglied der Narrenzunft Lenninger Hexa e.V. und Haus-DJ der Chippingdales Golf.</p>
+        <p>AfroJam ist Producer, DJ und Hochzeitsredner. Festes Mitglied der Narrenzunft Lenninger Hexa e.V. und Haus-DJ der Chippingdales Golf.</p>
         <div class="hobby-list">
             <span class="hobby-tag">🏋️ Fitness</span>
             <span class="hobby-tag">⛳ Golfen</span>
@@ -141,62 +165,131 @@
     <div class="grid-layout">
         <div class="card">
             <h3>Hochzeiten</h3>
-            <p>Freie Trauung & DJ-Service. Wir planen Ihren Tag individuell.</p>
-            <a href="hochzeiten.html" class="booking-btn" style="padding: 10px 20px; font-size: 0.9rem; margin-top: 15px;">ZUR HOCHZEITSSEITE</a>
+            <p>Freie Trauung & DJ-Service. Wir planen Ihren Tag individuell und sorgen für unvergessliche Momente.</p>
+            <a href="hochzeiten.html" class="btn-link">ZUR HOCHZEITSSEITE</a>
         </div>
-        <div class="card"><h3>Events</h3><p>Firmenfeiern & Jubiläen mit Technik-Profi.</p></div>
-        <div class="card"><h3>Clubs</h3><p>Vollgas-Sound für jede Crowd.</p></div>
+        <div class="card">
+            <h3>Events</h3>
+            <p>Firmenfeiern, Jubiläen oder Vereinsfeste. Professionelle Technik und der beste Sound für Ihre Party.</p>
+            <a href="party.html" class="btn-link">ZUR PARTYSEITE</a>
+        </div>
     </div>
 
     <h2 class="section-title">Sound-Engine</h2>
     <div class="grid-layout">
-        <div class="card"><h3>Golf Gorilla 🦍</h3><audio controls><source src="audio/Golf Gorilla .mp3" type="audio/mpeg"></audio></div>
-        <div class="card"><h3>Banana Joe 🍌</h3><audio controls><source src="audio/Banana joe  2.mp3" type="audio/mpeg"></audio></div>
-        <div class="card"><h3>Tarzan & Jane 🌴</h3><audio controls><source src="audio/Tarzan .mp3" type="audio/mpeg"></audio></div>
-        <div class="card"><h3>Der Gorilla Song 🐾</h3><audio controls><source src="audio/Der Gorilla Song .mp3" type="audio/mpeg"></audio></div>
+        <div class="card"><span class="audio-label">Golf Gorilla 🦍</span><audio controls><source src="audio/Golf Gorilla .mp3"></audio></div>
+        <div class="card"><span class="audio-label">Banana Joe 🍌</span><audio controls><source src="audio/Banana joe  2.mp3"></audio></div>
+        <div class="card"><span class="audio-label">Tarzan & Jane 🌴</span><audio controls><source src="audio/Tarzan .mp3"></audio></div>
+        <div class="card"><span class="audio-label">Der Gorilla Song 🐾</span><audio controls><source src="audio/Der Gorilla Song .mp3"></audio></div>
     </div>
 
     <h2 class="section-title">Live von Instagram & Partnern</h2>
-    <div class="insta-gallery-container">
-        <div class="insta-grid">
-            <div class="insta-card">
-                <a href="https://www.instagram.com/abteilung_vollgas" target="_blank" class="insta-item"><img src="bilder/afrojam.jpg" alt="DJ Afrojam"></a>
-                <a href="https://www.instagram.com/abteilung_vollgas" target="_blank" class="insta-name">Abteilung Vollgas</a>
+    <div class="partner-wrapper">
+        <div class="partner-grid">
+            <div class="partner-card">
+                <img src="bilder/afrojam.jpg" alt="Abteilung Vollgas">
+                <a href="https://www.instagram.com/abteilung_vollgas" target="_blank">Abteilung Vollgas</a>
             </div>
-            <div class="insta-card">
-                <a href="https://lenninger-hexa.com/h/" target="_blank" class="insta-item"><img src="bilder/hexa.gif" alt="Lenninger Hexa"></a>
-                <a href="https://lenninger-hexa.com/h/" target="_blank" class="insta-name">Lenninger Hexa e.V.</a>
+            <div class="partner-card">
+                <img src="bilder/hexa.gif" alt="Lenninger Hexa">
+                <a href="https://lenninger-hexa.com" target="_blank">Lenninger Hexa e.V.</a>
             </div>
-            <div class="insta-card">
-                <a href="https://chippingdales.de" target="_blank" class="insta-item"><img src="bilder/chippingdales.png" alt="Chippingdales"></a>
-                <a href="https://chippingdales.de" target="_blank" class="insta-name">Die Chippingdales e.V.</a>
+            <div class="partner-card">
+                <img src="bilder/chippingdales.png" alt="Chippingdales">
+                <a href="https://chippingdales.de" target="_blank">Die Chippingdales e.V.</a>
             </div>
         </div>
     </div>
 
     <h2 class="section-title">Standort & Route</h2>
     <div class="map-container">
-        <iframe width="100%" height="100%" frameborder="0" src="https://maps.google.com/maps?q=Bissinger%20Str.%2037,%20Lenningen&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+        <iframe 
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            style="border:0" 
+            src="https://maps.google.com/maps?q=Bissinger+Str.+37,+73252+Lenningen&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            allowfullscreen>
+        </iframe>
     </div>
 
-    <div style="text-align: center; margin-bottom: 80px;">
-        <a href="mailto:info@dj-afrojam.de" class="booking-btn">JETZT TERMIN ANFRAGEN</a>
-    </div>
+    <h2 class="section-title" style="margin-top: 80px;">Jetzt Termin anfragen</h2>
+    <section class="description-box" style="margin-top: 0;">
+        <form action="mailto:info@dj-afrojam.de" method="post" enctype="text/plain">
+            <div class="form-grid">
+                <input type="text" name="Name" placeholder="Dein Name" required>
+                <input type="email" name="Email" placeholder="Deine E-Mail Adresse (Pflichtfeld)" required>
+                <input type="tel" name="Handy" placeholder="Deine Handynummer (Pflichtfeld)" required>
+                <input type="text" name="Betreff" placeholder="Anlass (z.B. Hochzeit 2026)" required>
+                <textarea name="Nachricht" rows="4" placeholder="Deine Nachricht an AfroJam..." class="full-width"></textarea>
+            </div>
+            <div style="margin-top: 20px;">
+                <button type="submit" class="btn-link">ANFRAGE ABSENDEN</button>
+            </div>
+        </form>
+    </section>
+
 </div>
 
 <footer>
     <p>© 2026 DJ AfroJam – Abteilung Vollgas</p>
     <div class="legal-links">
         <a onclick="document.getElementById('imp').style.display='block'">Impressum</a> | 
-        <a onclick="document.getElementById('dat').style.display='block'">Datenschutz</a> | 
+        <a onclick="document.getElementById('dat').style.display='block'">Datenschutz</a> |
         <a onclick="document.getElementById('lic').style.display='block'">KI Lizenz</a>
     </div>
 </footer>
 
-<div id="imp" class="modal"><div class="modal-content"><span class="close-btn" onclick="document.getElementById('imp').style.display='none'">×</span><h2>Impressum</h2><p>Jean Michel Prothmann<br>Abteilung Vollgas<br>Bissinger Str. 37 | 73252 Lenningen</p></div></div>
-<div id="dat" class="modal"><div class="modal-content"><span class="close-btn" onclick="document.getElementById('dat').style.display='none'">×</span><h2>Datenschutz</h2><p>Daten werden nur zur Beantwortung von E-Mails genutzt.</p></div></div>
-<div id="lic" class="modal"><div class="modal-content"><span class="close-btn" onclick="document.getElementById('lic').style.display='none'">×</span><h2>KI Lizenz</h2><p>Songs Eigentum von AfroJam via AISongGenerator.io</p></div></div>
+<div id="imp" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="document.getElementById('imp').style.display='none'">×</span>
+        <h2>Impressum</h2>
+        <p><strong>Angaben gemäß § 5 TMG</strong></p>
+        <p>
+            Jean Michel Prothmann<br>
+            Bissinger Str. 37<br>
+            73252 Lenningen<br>
+            Deutschland
+        </p>
+        <h3>Kontakt</h3>
+        <p>E-Mail: info@dj-afrojam.de</p>
+        <p>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br>Jean Michel Prothmann<br>Bissinger Str. 37<br>73252 Lenningen</p>
+    </div>
+</div>
 
-<script>window.onclick = function(event) { if (event.target.className == 'modal') { event.target.style.display = "none"; } }</script>
+<div id="dat" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="document.getElementById('dat').style.display='none'">×</span>
+        <h2>Datenschutzerklärung</h2>
+        <h3>1. Datenschutz auf einen Blick</h3>
+        <p><strong>Allgemeine Hinweise</strong><br>
+        Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
+        
+        <h3>2. Datenerfassung auf unserer Website</h3>
+        <p><strong>Kontaktformular / E-Mail Kontakt</strong><br>
+        Wenn Sie uns per Kontaktformular oder E-Mail Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+        
+        <p><strong>Server-Log-Dateien</strong><br>
+        Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt (z.B. Browsertyp, Uhrzeit der Serveranfrage). Diese Daten sind nicht bestimmten Personen zuordenbar.</p>
+    </div>
+</div>
+
+<div id="lic" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="document.getElementById('lic').style.display='none'">×</span>
+        <h2>KI Lizenz & Urheberrecht</h2>
+        <h3>Generierte Inhalte</h3>
+        <p>Teile der Texte, Bilder und Musikkompositionen auf dieser Webseite wurden unter Zuhilfenahme künstlicher Intelligenz erstellt und durch DJ AfroJam kuratiert und bearbeitet.</p>
+        
+        <h3>Nutzungsrechte</h3>
+        <p>Alle auf dieser Website veröffentlichten Inhalte (Bilder, Texte, Audiofiles) unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers (Jean Michel Prothmann / DJ AfroJam).</p>
+        
+        <p>Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
+    </div>
+</div>
+
+<script>
+    window.onclick = function(event) { if (event.target.className == 'modal') { event.target.style.display = "none"; } }
+</script>
 </body>
 </html>

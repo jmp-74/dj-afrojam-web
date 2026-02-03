@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Party & Events | DJ AfroJam</title>
+    <style>
+        :root {
+            --gold: #f39c12;
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(10, 10, 10, 0.92);
+            --text: #ffffff;
+        }
+
+        html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            background-color: var(--dark-bg);
+            /* NEUER fixierter Hintergrund: hintergrund_b.jpg */
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bilder/hintergrund_b.jpg');
+            background-attachment: fixed; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .nav-back { padding: 20px; position: sticky; top: 0; z-index: 1000; }
+        .nav-back a { 
+            color: var(--gold); text-decoration: none; font-weight: bold; border: 1px solid var(--gold); 
+            padding: 10px 20px; border-radius: 50px; background: rgba(0,0,0,0.8); transition: 0.3s;
+        }
+        .nav-back a:hover { background: var(--gold); color: black; }
+
+        .container { max-width: 1100px; margin: auto; padding: 20px; }
+
+        header { text-align: center; margin-bottom: 40px; padding: 80px 20px 40px 20px; }
+        h1 { 
+            font-size: clamp(2.5rem, 10vw, 5rem); color: var(--gold); text-transform: uppercase; 
+            text-shadow: 3px 3px 20px rgba(0,0,0,0.9); margin: 0;
+        }
+        .subtitle { font-size: 1.5rem; margin-top: 10px; font-weight: 300; letter-spacing: 2px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+
+        .content-box {
+            background: var(--card-bg); padding: 40px; border-radius: 25px; border: 1px solid var(--gold);
+            line-height: 1.8; margin-bottom: 40px; text-align: center; backdrop-filter: blur(10px);
+        }
+
+        /* Galerie für 6 Bilder */
+        .showcase-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 20px; 
+            margin-bottom: 50px;
+        }
+
+        .showcase-item {
+            border-radius: 15px; overflow: hidden; border: 2px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: 0.3s;
+            cursor: pointer;
+            height: 350px;
+        }
+        .showcase-item:hover { transform: scale(1.03); border-color: #fff; }
+        .showcase-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        /* Lightbox */
+        .lightbox {
+            display: none; position: fixed; z-index: 2000; top: 0; left: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.95);
+            justify-content: center; align-items: center;
+        }
+        .lightbox img { max-width: 90%; max-height: 85%; border: 2px solid var(--gold); border-radius: 10px; }
+        .close-lightbox { position: absolute; top: 30px; right: 40px; color: var(--gold); font-size: 50px; cursor: pointer; }
+
+        /* Karten Layout */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .party-card { 
+            background: var(--card-bg); border-radius: 20px; border: 1px solid rgba(243, 156, 18, 0.3); 
+            text-align: center; padding: 30px; backdrop-filter: blur(10px);
+        }
+        .party-card h3 { color: var(--gold); font-size: 1.8rem; margin-top: 0; }
+        .audio-item { margin-bottom: 20px; padding: 10px; border-bottom: 1px solid rgba(243, 156, 18, 0.2); }
+        .audio-label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--gold); }
+        audio { width: 100%; filter: invert(100%) hue-rotate(180deg) brightness(1.5); }
+
+        /* Formular */
+        .form-section { 
+            background: var(--card-bg); padding: 50px; border-radius: 25px; border: 1px solid var(--gold);
+            backdrop-filter: blur(10px); margin-bottom: 40px;
+        }
+        .form-section h2 { text-align: center; color: var(--gold); margin-bottom: 30px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        input, select, textarea { 
+            width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid #444; color: white; border-radius: 10px; box-sizing: border-box;
+            font-size: 1rem;
+        }
+        .full-width { grid-column: span 2; }
+        .submit-btn { 
+            background: var(--gold); color: black; padding: 20px; border: none; border-radius: 50px; 
+            font-weight: bold; cursor: pointer; width: 100%; font-size: 1.2rem; transition: 0.3s;
+            margin-top: 20px;
+        }
+        .submit-btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(243, 156, 18, 0.4); }
+
+        footer { text-align: center; padding: 40px; color: #888; font-size: 0.9rem; border-top: 1px solid var(--gold); }
+
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-back"><a href="index.html">← ZURÜCK</a></div>
+
+<div class="container">
+    <header>
+        <h1>Party & Events</h1>
+        <div class="subtitle">Wir feiern Deine Party bei Dir!</div>
+    </header>
+
+    <section class="content-box">
+        <h2>Abteilung Vollgas – Überall dort, wo es knallt!</h2>
+        <p>Ob Firma, Verein oder Privat: Lass den Sommer zu Dir! Wir bringen die Beats in Deine Firma, Deinen Verein oder direkt in Deinen Garten. Sommerhits garantiert!</p>
+    </section>
+
+    <div class="showcase-grid">
+        <div class="showcase-item" onclick="openLightbox('bilder/6CAF7E13-8F30-4256-8A45-D3F311AAF918.jpg')">
+            <img src="bilder/6CAF7E13-8F30-4256-8A45-D3F311AAF918.jpg" alt="Party Eskalation">
+        </div>
+        <div class="showcase-item" onclick="openLightbox('bilder/IMG_6822.jpg')">
+            <img src="bilder/IMG_6822.jpg" alt="DJ Setup Live">
+        </div>
+        <div class="showcase-item" onclick="openLightbox('bilder/IMG_4169.jpg')">
+            <img src="bilder/IMG_4169.jpg" alt="Fasching & Outdoor">
+        </div>
+        <div class="showcase-item" onclick="openLightbox('bilder/IMG_6812.jpg')">
+            <img src="bilder/IMG_6812.jpg" alt="Live Bühne">
+        </div>
+        
+        <div class="showcase-item" onclick="openLightbox('bilder/party_bild_5.jpg')">
+            <img src="bilder/party_bild_5.jpg" alt="Party Impression 5">
+        </div>
+        <div class="showcase-item" onclick="openLightbox('bilder/party_bild_6.jpg')">
+            <img src="bilder/party_bild_6.jpg" alt="Party Impression 6">
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+
+    <div class="grid">
+        <div class="party-card">
+            <h3>Event Sound Check</h3>
+            <div class="audio-item">
+                <span class="audio-label">High Power Summer Remix:</span>
+                <audio controls><source src="audio/Calpe Nights  (High Power Summer Remix).mp3" type="audio/mpeg"></audio>
+            </div>
+            <div class="audio-item">
+                <span class="audio-label">AfroJam Calpe Song:</span>
+                <audio controls><source src="audio/DJ AfroJam calpe song .mp3" type="audio/mpeg"></audio>
+            </div>
+        </div>
+        
+        <div class="party-card">
+            <h3>Alles inklusive</h3>
+            <p style="text-align: left;">
+                Wir liefern das volle Paket für Dein Event:<br><br>
+                ✅ Profi-DJ mit "Vollgas"-Garantie<br>
+                ✅ Modernste Ton- und Lichttechnik<br>
+                ✅ Individuelle Musikwünsche (Sommerhits, Schlager, Club)<br>
+                ✅ Unkomplizierte Planung für Firmen & Vereine
+            </p>
+        </div>
+    </div>
+
+    <section class="form-section">
+        <h2>Unverbindliche Party-Anfrage</h2>
+        <form action="mailto:info@dj-afrojam.de" method="post" enctype="text/plain">
+            <div class="form-grid">
+                <input type="text" name="Veranstalter" placeholder="Firma / Verein / Name" required>
+                <input type="email" name="Email" placeholder="E-Mail (Pflichtfeld)" required>
+                <input type="tel" name="Telefon" placeholder="Handy (Pflichtfeld)" required>
+                <input type="date" name="Datum" required>
+                <input type="text" name="Ort" placeholder="Ort der Party" class="full-width">
+                <select name="Event-Typ">
+                    <option value="Firma">Firmenfeier</option>
+                    <option value="Verein">Vereinsfest / Fasching</option>
+                    <option value="Privat">Gartenparty / Geburtstag</option>
+                </select>
+                <textarea name="Wünsche" rows="4" placeholder="Deine Vision für die Party..." class="full-width"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">SOMMERHITS ANFRAGEN</button>
+        </form>
+    </section>
+</div>
+
+<footer>
+    <p>© 2026 DJ AfroJam – Abteilung Vollgas</p>
+</footer>
+
+<script>
+    function openLightbox(src) {
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox').style.display = 'flex';
+    }
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
