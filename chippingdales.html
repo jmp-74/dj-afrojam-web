@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Party & Events | DJ AfroJam</title>
+    <title>Die Chippingdales | DJ AfroJam</title>
     <style>
         :root {
             --gold: #f39c12;
@@ -18,8 +18,8 @@
             font-family: 'Segoe UI', Roboto, sans-serif;
             color: var(--text);
             background-color: var(--dark-bg);
-            /* Fixierter Party-Hintergrund */
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bilder/party_hintergrund.jpg');
+            /* HINTERGRUND GEÄNDERT: hintergrund.jpg */
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bilder/hintergrund.jpg');
             background-attachment: fixed; 
             background-position: center; 
             background-repeat: no-repeat;
@@ -47,7 +47,7 @@
             line-height: 1.8; margin-bottom: 40px; text-align: center; backdrop-filter: blur(10px);
         }
 
-        /* Galerie für 6 Bilder */
+        /* Galerie-Grid */
         .showcase-grid {
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
@@ -60,6 +60,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: 0.3s;
             cursor: pointer;
             height: 350px;
+            background: #000;
         }
         .showcase-item:hover { transform: scale(1.03); border-color: #fff; }
         .showcase-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -73,15 +74,18 @@
         .lightbox img { max-width: 90%; max-height: 85%; border: 2px solid var(--gold); border-radius: 10px; }
         .close-lightbox { position: absolute; top: 30px; right: 40px; color: var(--gold); font-size: 50px; cursor: pointer; }
 
-        /* Karten Layout */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; margin-bottom: 40px; }
-        .party-card { 
+        /* Musik Grid */
+        .music-section { margin-bottom: 50px; }
+        .music-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        
+        .song-card { 
             background: var(--card-bg); border-radius: 20px; border: 1px solid rgba(243, 156, 18, 0.3); 
-            text-align: center; padding: 30px; backdrop-filter: blur(10px);
+            text-align: center; padding: 25px; backdrop-filter: blur(10px); transition: 0.3s;
         }
-        .party-card h3 { color: var(--gold); font-size: 1.8rem; margin-top: 0; }
-        .audio-item { margin-bottom: 20px; padding: 10px; border-bottom: 1px solid rgba(243, 156, 18, 0.2); }
-        .audio-label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--gold); }
+        .song-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .song-card h3 { color: var(--gold); font-size: 1.4rem; margin-top: 0; margin-bottom: 5px; }
+        .song-desc { font-size: 0.9rem; color: #ccc; margin-bottom: 15px; }
+        
         audio { width: 100%; filter: invert(100%) hue-rotate(180deg) brightness(1.5); }
 
         /* Formular */
@@ -109,7 +113,7 @@
         @media (max-width: 768px) {
             .form-grid { grid-template-columns: 1fr; }
             .full-width { grid-column: span 1; }
-            .grid { grid-template-columns: 1fr; }
+            .music-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -119,34 +123,37 @@
 
 <div class="container">
     <header>
-        <h1>Party & Events</h1>
-        <div class="subtitle">Wir feiern Deine Party bei Dir!</div>
+        <h1>Die Chippingdales</h1>
+        <div class="subtitle">Golf, Spaß & Abteilung Vollgas</div>
     </header>
 
     <section class="content-box">
-        <h2>Abteilung Vollgas – Überall dort, wo es knallt!</h2>
-        <p>Ob Firma, Verein oder Privat: Lass den Sommer zu Dir! Wir bringen die Beats in Deine Firma, Deinen Verein oder direkt in Deinen Garten. Sommerhits garantiert!</p>
+        <h2>Wer wir sind</h2>
+        <p>
+            Wir sind die <b>Chippingdales</b> – mehr als nur ein Golfclub. Wir verbinden den Sport mit Leidenschaft, Freundschaft und legendären Partys. 
+            Zusammen mit unserem Haus-DJ AfroJam sorgen wir nicht nur auf dem Green für den perfekten Schwung, sondern auch auf der Tanzfläche.
+            Hier findest du unsere Hymnen und den Sound, der uns antreibt.
+        </p>
     </section>
 
     <div class="showcase-grid">
-        <div class="showcase-item" onclick="openLightbox('bilder/6CAF7E13-8F30-4256-8A45-D3F311AAF918.jpg')">
-            <img src="bilder/6CAF7E13-8F30-4256-8A45-D3F311AAF918.jpg" alt="Party Eskalation">
+        <div class="showcase-item" onclick="openLightbox('bilder/IMG_2556.JPG')">
+            <img src="bilder/IMG_2556.JPG" alt="Chippingdales Team Circle">
         </div>
-        <div class="showcase-item" onclick="openLightbox('bilder/IMG_6822.jpg')">
-            <img src="bilder/IMG_6822.jpg" alt="DJ Setup Live">
+        <div class="showcase-item" onclick="openLightbox('bilder/golf3.jpg')">
+            <img src="bilder/golf3.jpg" alt="Golf in den Bergen">
         </div>
-        <div class="showcase-item" onclick="openLightbox('bilder/IMG_4169.jpg')">
-            <img src="bilder/IMG_4169.jpg" alt="Fasching & Outdoor">
+        <div class="showcase-item" onclick="openLightbox('bilder/golf4.jpeg')">
+            <img src="bilder/golf4.jpeg" alt="Trainingslager Spaß">
         </div>
-        <div class="showcase-item" onclick="openLightbox('bilder/IMG_6812.jpg')">
-            <img src="bilder/IMG_6812.jpg" alt="Live Bühne">
+        <div class="showcase-item" onclick="openLightbox('bilder/golf5.jpeg')">
+            <img src="bilder/golf5.jpeg" alt="Training Haghof">
         </div>
-        
-        <div class="showcase-item" onclick="openLightbox('bilder/party_bild_5.jpg')">
-            <img src="bilder/party_bild_5.jpg" alt="Party Impression 5">
+        <div class="showcase-item" onclick="openLightbox('bilder/golf1.jpg')">
+            <img src="bilder/golf1.jpg" alt="Sunset Golf">
         </div>
-        <div class="showcase-item" onclick="openLightbox('bilder/party_bild_6.jpg')">
-            <img src="bilder/party_bild_6.jpg" alt="Party Impression 6">
+        <div class="showcase-item" onclick="openLightbox('bilder/golf6.jpg')">
+            <img src="bilder/golf6.jpg" alt="Chippingdales Duo">
         </div>
     </div>
 
@@ -155,54 +162,48 @@
         <img id="lightbox-img" src="">
     </div>
 
-    <div class="grid">
-        <div class="party-card">
-            <h3>Event Sound Check</h3>
-            <div class="audio-item">
-                <span class="audio-label">High Power Summer Remix:</span>
-                <audio controls><source src="audio/Calpe Nights  (High Power Summer Remix).mp3" type="audio/mpeg"></audio>
+    <section class="music-section">
+        <h2 style="text-align: center; color: var(--gold); margin-bottom: 30px; text-transform: uppercase;">Unsere Hymnen</h2>
+        <div class="music-grid">
+            
+            <div class="song-card">
+                <h3>Chippingdales aufm Wiesen 🥨</h3>
+                <div class="song-desc">Die Party-Hymne</div>
+                <audio controls><source src="audio/Chippingdales aufm Wiesen .mp3" type="audio/mpeg"></audio>
             </div>
-            <div class="audio-item">
-                <span class="audio-label">AfroJam Calpe Song:</span>
-                <audio controls><source src="audio/DJ AfroJam calpe song .mp3" type="audio/mpeg"></audio>
+
+            <div class="song-card">
+                <h3>Leonhardshaun ⛳</h3>
+                <div class="song-desc">Unser Golf-Song</div>
+                <audio controls><source src="audio/Leonhardshaun .mp3" type="audio/mpeg"></audio>
             </div>
+
+            <div class="song-card">
+                <h3>Leonhardshaun (Solo) 🎤</h3>
+                <div class="song-desc">Special Version</div>
+                <audio controls><source src="audio/Leonhardshaun solo.mp3" type="audio/mpeg"></audio>
+            </div>
+
         </div>
-        
-        <div class="party-card">
-            <h3>Alles inklusive</h3>
-            <p style="text-align: left;">
-                Wir liefern das volle Paket für Dein Event:<br><br>
-                ✅ Profi-DJ mit "Vollgas"-Garantie<br>
-                ✅ Modernste Ton- und Lichttechnik<br>
-                ✅ Individuelle Musikwünsche (Sommerhits, Schlager, Club)<br>
-                ✅ Unkomplizierte Planung für Firmen & Vereine
-            </p>
-        </div>
-    </div>
+    </section>
 
     <section class="form-section">
-        <h2>Unverbindliche Party-Anfrage</h2>
+        <h2>Kontakt zum Verein</h2>
         <form action="mailto:afrojam@freetime-fun.de" method="post" enctype="text/plain">
             <div class="form-grid">
-                <input type="text" name="Veranstalter" placeholder="Firma / Verein / Name" required>
-                <input type="email" name="Email" placeholder="E-Mail (Pflichtfeld)" required>
-                <input type="tel" name="Telefon" placeholder="Handy (Pflichtfeld)" required>
-                <input type="date" name="Datum" required>
-                <input type="text" name="Ort" placeholder="Ort der Party" class="full-width">
-                <select name="Event-Typ">
-                    <option value="Firma">Firmenfeier</option>
-                    <option value="Verein">Vereinsfest / Fasching</option>
-                    <option value="Privat">Gartenparty / Geburtstag</option>
-                </select>
-                <textarea name="Wünsche" rows="4" placeholder="Deine Vision für die Party..." class="full-width"></textarea>
+                <input type="text" name="Name" placeholder="Dein Name" required>
+                <input type="email" name="Email" placeholder="Deine E-Mail Adresse" required>
+                <input type="text" name="Betreff" value="Anfrage Chippingdales" readonly style="background: rgba(243, 156, 18, 0.2); color: #aaa;">
+                <input type="tel" name="Handy" placeholder="Deine Handynummer">
+                <textarea name="Nachricht" rows="4" placeholder="Möchtest du mitspielen oder uns buchen?" class="full-width"></textarea>
             </div>
-            <button type="submit" class="submit-btn">SOMMERHITS ANFRAGEN</button>
+            <button type="submit" class="submit-btn">NACHRICHT SENDEN</button>
         </form>
     </section>
 </div>
 
 <footer>
-    <p>© 2026 DJ AfroJam – Abteilung Vollgas</p>
+    <p>© 2026 DJ AfroJam – Offizieller Partner der Chippingdales e.V.</p>
 </footer>
 
 <script>
